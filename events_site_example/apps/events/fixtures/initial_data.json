@@ -1,0 +1,53 @@
+[
+    {
+        "model": "events.eventtype",
+        "pk": 1,
+        "fields": {
+            "name": "Yet another Conference",
+            "slug": "yac",
+            "is_published": "True"
+        }
+    },
+
+
+    {
+        "model": "events.event",
+        "pk": 1,
+        "fields": {
+            "name": "Yac 2012",
+            "slug": "2012",
+            "type": 1,
+            "date_start": "2012-10-01 12:00+04:00"
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 2,
+        "fields": {
+            "name": "Yac 2013",
+            "slug": "2013",
+            "type": 1,
+            "date_start": "2013-10-01 12:00+04:00"
+        }
+    },
+
+    {
+        "model": "events.lecture",
+        "pk": 1,
+        "fields": {
+            "name": "Yandex and W3C",
+            "slug": "yandex-and-w3c",
+            "event": 1,
+            "video_url": "http://www.youtube.com/watch?v=B_zcA5a5ZaU"
+        }
+    },
+    {
+        "model": "events.lecture",
+        "pk": 2,
+        "fields": {
+            "name": "Yandex browser presentation",
+            "slug": "presentation",
+            "event": 1
+        }
+    }
+]

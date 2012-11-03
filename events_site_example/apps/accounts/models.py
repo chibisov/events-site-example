@@ -17,7 +17,6 @@ class Profile(models.Model):
 
     @property
     def is_studying(self):
-        # todo: test me
         return ProfileConditions.is_studying(model_instance=self)
 
     @property

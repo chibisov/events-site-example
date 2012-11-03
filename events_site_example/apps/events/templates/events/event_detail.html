@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>"{{ object.name|capfirst }}" lectures:</h1>
+    <ul>
+        {% for lecture in object.lecture_set.all %}
+            <li>
+                <a href="{{ lecture.get_absolute_url }}">{{ lecture }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

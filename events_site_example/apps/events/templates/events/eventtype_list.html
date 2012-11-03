@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Event types:</h1>
+    <ul>
+        {% for object in object_list %}
+            <li>
+                <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

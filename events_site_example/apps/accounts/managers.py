@@ -7,7 +7,6 @@ from apps.accounts.conditions import ProfileConditions
 
 class ProfileQuerySet(QuerySet):
     def filter_by_studying(self):
-        # todo: test me
         return self.filter(ProfileConditions.is_studying())
 
     def filter_by_working(self):
