@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+from django.utils.timezone import now
 
 import factory
 
@@ -19,7 +20,7 @@ class EventFactory(factory.DjangoModelFactory):
     name = factory.Sequence(lambda n: u'Event {n}'.format(n=n))
     slug = factory.Sequence(lambda n: u'event-{n}'.format(n=n))
     type = factory.SubFactory(EventTypeFactory)
-    date_start = factory.LazyAttribute(lambda i: datetime.datetime.now() + datetime.timedelta(days=1))
+    date_start = factory.LazyAttribute(lambda i: now() + datetime.timedelta(days=1))
 
 
 class LectureFactory(factory.DjangoModelFactory):

@@ -5,7 +5,7 @@
         "fields": {
             "name": "Yet another Conference",
             "slug": "yac",
-            "is_published": "True"
+            "is_moderated": "True"
         }
     },
 
