@@ -47,6 +47,9 @@ class LectureQuerySet(QuerySet):
     def filter_by_with_video(self):
         return self.filter(LectureConditions.is_with_video())
 
+    def filter_by_with_published_event(self):
+        return self.filter(LectureConditions.is_with_published_event())
+
 
 class LectureManager(models.Manager):
     def get_query_set(self):
@@ -54,3 +57,6 @@ class LectureManager(models.Manager):
 
     def filter_by_with_video(self):
         return self.get_query_set().filter_by_with_video()
+
+    def filter_by_with_published_event(self):
+        return self.get_query_set().filter_by_with_published_event()

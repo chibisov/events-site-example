@@ -85,3 +85,7 @@ class Lecture(models.Model):
     @property
     def is_with_video(self):
         return LectureConditions.is_with_video(model_instance=self)
+
+    @property
+    def is_with_published_event(self):
+        return LectureConditions.is_with_published_event(model_instance=self)

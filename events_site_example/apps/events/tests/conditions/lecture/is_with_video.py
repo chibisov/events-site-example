@@ -37,7 +37,7 @@ class TestLectureIsWithVideo(TestConditionBase):
     def test_make_with_video(self):
         msg = "make_with_video should make lecture with video"
 
-        # make event not published by hand
+        # make lecture without video by hand
         self.instance.video_url = None
 
         makers.lecture.make_with_video(self.instance) # BANG!
@@ -47,7 +47,7 @@ class TestLectureIsWithVideo(TestConditionBase):
     def test_make_not_with_video(self):
         msg = "make_not_with_video should make lecture without video"
 
-        # make event not published by hand
+        # make lecture with video by hand
         self.instance.video_url = 'http://www.youtube.com/watch?v=oHg5SJYRHA0'
 
         makers.lecture.make_not_with_video(self.instance) # BANG!
