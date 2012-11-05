@@ -13,11 +13,6 @@ class TestLectureIsPublished(TestConditionBase):
     def create_instance(self):
         return LectureFactory()
 
-    def save_instance(self, instance):
-        instance.save()
-        instance.event.save()
-        instance.event.type.save()
-
     def test_should_be_true__if_is_with_published_event__and__is_with_video(self):
         msg = 'lecture should be published, if it is with published event and with video'
 

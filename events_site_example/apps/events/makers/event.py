@@ -14,9 +14,11 @@ def make_not_with_published_type(event):
 
 def make_it_time_to_publish(event):
     event.date_start = now() + datetime.timedelta(days=2)
+    event.save()
 
 def make_not_it_time_to_publish(event):
     event.date_start = now() + datetime.timedelta(days=3)
+    event.save()
 
 def make_published(event):
     event_type.make_published(event.type)

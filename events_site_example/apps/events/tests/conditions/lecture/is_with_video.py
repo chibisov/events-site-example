@@ -13,24 +13,24 @@ class TestLectureIsWithVideo(TestConditionBase):
     def create_instance(self):
         return LectureFactory()
 
-    def save_instance(self, instance):
-        instance.save()
-
     def test_should_be_true_if__video_url__is_filled(self):
         msg = 'if lecture has filled "video_url" param, then it should be with video'
         self.instance.video_url = 'http://www.youtube.com/watch?v=oHg5SJYRHA0'
+        self.instance.save()
 
         self.assertConditionTrue(msg=msg)
 
     def test_should_be_false_if__video_url__is_none(self):
         msg = 'if lecture has filled "video_url" param with None, then it should not be with video'
         self.instance.video_url = None
+        self.instance.save()
 
         self.assertConditionFalse(msg=msg)
 
     def test_should_be_false_if__video_url__is_empty(self):
         msg = 'if lecture has filled "video_url" param with "", then it should not be with video'
         self.instance.video_url = ''
+        self.instance.save()
 
         self.assertConditionFalse(msg=msg)
 
@@ -39,6 +39,7 @@ class TestLectureIsWithVideo(TestConditionBase):
 
         # make lecture without video by hand
         self.instance.video_url = None
+        self.instance.save()
 
         makers.lecture.make_with_video(self.instance) # BANG!
 
@@ -49,6 +50,7 @@ class TestLectureIsWithVideo(TestConditionBase):
 
         # make lecture with video by hand
         self.instance.video_url = 'http://www.youtube.com/watch?v=oHg5SJYRHA0'
+        self.instance.save()
 
         makers.lecture.make_not_with_video(self.instance) # BANG!
 

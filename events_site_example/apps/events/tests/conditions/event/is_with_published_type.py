@@ -13,9 +13,6 @@ class TestEventIsWithPublishedType(TestConditionBase):
     def create_instance(self):
         return EventFactory()
 
-    def save_instance(self, instance):
-        instance.type.save()
-
     def test_should_be_true_if__type_is_published__is_true(self):
         msg = 'should be True, if event.type is published'
         makers.event_type.make_published(self.instance.type)

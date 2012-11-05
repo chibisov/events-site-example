@@ -13,10 +13,6 @@ class TestEventIsPublished(TestConditionBase):
     def create_instance(self):
         return EventFactory()
 
-    def save_instance(self, instance):
-        instance.type.save()
-        instance.save()
-
     def test_should_be_true_if__type_is_published__and__event_is_ready_to_publish_by_time(self):
         msg = 'should be True, if event.type is published and event is ready to publish by time'
         makers.event_type.make_published(self.instance.type)

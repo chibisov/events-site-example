@@ -10,11 +10,9 @@ class ProfileQuerySet(QuerySet):
         return self.filter(ProfileConditions.is_studying())
 
     def filter_by_working(self):
-        # todo: test me
         return self.filter(ProfileConditions.is_working())
 
     def filter_by_studying_and_working(self):
-        # todo: test me
         return self.filter(ProfileConditions.is_studying_and_working())
 
 
@@ -24,3 +22,9 @@ class ProfileManager(models.Manager):
 
     def filter_by_studying(self):
         return self.get_query_set().filter_by_studying()
+
+    def filter_by_working(self):
+        return self.get_query_set().filter_by_working()
+
+    def filter_by_studying_and_working(self):
+        return self.get_query_set().filter_by_studying_and_working()

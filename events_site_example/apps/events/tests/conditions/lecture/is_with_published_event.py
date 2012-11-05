@@ -13,11 +13,6 @@ class TestLectureIsWithPublishedEvent(TestConditionBase):
     def create_instance(self):
         return LectureFactory()
 
-    def save_instance(self, instance):
-        instance.save()
-        instance.event.save()
-        instance.event.type.save()
-
     def test_should_be_true__if_event_is_published(self):
         msg = 'lecture should be with published event if event is published'
 

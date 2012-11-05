@@ -4,6 +4,6 @@
 {% block content %}
     <h1>Lecture "{{ object.name|capfirst }}" on <a href="{{ object.event.get_absolute_url }}">{{ object.event }}</a></h1>
     <div>
-        {{ object.video_url }}
+        <iframe width="420" height="315" src="{{ object.video_url }}" frameborder="0" allowfullscreen></iframe>
     </div>
 {% endblock %}

@@ -18,10 +18,6 @@ class TestConditionBase(TestCase):
         """Creates instance of model"""
         raise NotImplementedError('Subclasses must define this method.')
 
-    def save_instance(self):
-        """Saves instance for queryset filtering"""
-        raise NotImplementedError('Subclasses must define this method.')
-
     def assertInstanceMethodResponseReturns(self, response, msg):
         self.assertEqual(getattr(self.instance, self.instance_property_name), response, msg=msg)
 
@@ -37,7 +33,6 @@ class TestConditionBase(TestCase):
         self.assertInstanceMethodResponseReturns(True, msg=msg)
 
         # test QuerySet filter method
-        self.save_instance(instance=self.instance)
         self.assertFound(msg=msg)
 
     def assertConditionFalse(self, msg=None):
@@ -45,5 +40,4 @@ class TestConditionBase(TestCase):
         self.assertInstanceMethodResponseReturns(False, msg=msg)
 
         # test QuerySet filter method
-        self.save_instance(instance=self.instance)
         self.assertNotFound(msg=msg)

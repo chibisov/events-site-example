@@ -42,14 +42,26 @@ class EventConditions(object):
     @classmethod
     def is_with_published_type(cls, model_instance=None, prefix=None):
         if model_instance:
-            condition = model_instance.type.is_published
+            event_instance = model_instance.type
         else:
-            condition = EventTypeConditions.is_published(prefix=add(prefix, 'type'))
+            event_instance = None
 
-        return condition
+        kwargs = {
+            'model_instance': event_instance,
+            'prefix': add(prefix, 'type')
+        }
+        return EventTypeConditions.is_published(**kwargs)
 
 
 class LectureConditions(object):
+    @classmethod
+    def is_published(cls, model_instance=None, prefix=None):
+        kwargs = {
+            'model_instance': model_instance,
+            'prefix': prefix
+        }
+        return cls.is_with_video(**kwargs) & cls.is_with_published_event(**kwargs)
+
     @classmethod
     def is_with_video(cls, model_instance=None, prefix=None):
         if model_instance:
@@ -72,11 +84,3 @@ class LectureConditions(object):
             'prefix': add(prefix, 'event')
         }
         return EventConditions.is_published(**kwargs)
-
-    @classmethod
-    def is_published(cls, model_instance=None, prefix=None):
-        kwargs = {
-            'model_instance': model_instance,
-            'prefix': prefix
-        }
-        return cls.is_with_video(**kwargs) & cls.is_with_published_event(**kwargs)

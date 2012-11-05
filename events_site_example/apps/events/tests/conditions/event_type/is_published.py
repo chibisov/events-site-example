@@ -13,18 +13,17 @@ class TestEventTypeIsPublished(TestConditionBase):
     def create_instance(self):
         return EventTypeFactory()
 
-    def save_instance(self, instance):
-        instance.save()
-
     def test_should_be_published_if__is_moderated__is_true(self):
         msg = 'event type should be published if "is_moderated" is True'
         self.instance.is_moderated = True
+        self.instance.save()
 
         self.assertConditionTrue(msg=msg)
 
     def test_should_not_be_published_if__is_moderated__is_false(self):
         msg = 'event type should not be published if "is_moderated" is False'
         self.instance.is_moderated = False
+        self.instance.save()
 
         self.assertConditionFalse(msg=msg)
 

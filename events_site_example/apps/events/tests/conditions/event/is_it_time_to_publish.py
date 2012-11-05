@@ -16,21 +16,20 @@ class TestEventIsItTimeToPublish(TestConditionBase):
     def create_instance(self):
         return EventFactory()
 
-    def save_instance(self, instance):
-        instance.save()
-
     def test_should_be_true_if__date_start__lte__2_days_from_now_in_future(self):
         msg = 'should be True, if event.date_start is 2 days or less from now in future. '
 
         for i in range(2):
             self.instance.date_start = now() + datetime.timedelta(days=i)
             msg += 'Tested with {days} days'.format(days=i)
+            self.instance.save()
 
             self.assertConditionTrue(msg=msg)
 
     def test_should_be_false_if__date_start__gt__2_days_from_now(self):
         msg = 'should be False, if event.date_start is more than 2 days in future'
         self.instance.date_start = now() + datetime.timedelta(days=3)
+        self.instance.save()
 
         self.assertConditionFalse(msg=msg)
 

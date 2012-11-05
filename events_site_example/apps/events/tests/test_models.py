@@ -14,7 +14,6 @@ class TestEventTypeModel(TestCase):
         self.assertEqual(self.event_type.get_absolute_url(), expected)
 
 
-
 class TestEventModel(TestCase):
     def setUp(self):
         self.event = EventFactory.build(name=u'Yac 2012')

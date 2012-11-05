@@ -125,7 +125,6 @@ INSTALLED_APPS = (
     'apps.common_app',
     'apps.accounts',
     'apps.events',
-    'apps.mailing',
 )
 
 # A sample logging configuration. The only tangible logging

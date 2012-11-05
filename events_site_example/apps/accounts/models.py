@@ -21,10 +21,8 @@ class Profile(models.Model):
 
     @property
     def is_working(self):
-        # todo: test me
         return ProfileConditions.is_working(model_instance=self)
 
     @property
     def is_studying_and_working(self):
-        # todo: test me
         return ProfileConditions.is_studying_and_working(model_instance=self)
