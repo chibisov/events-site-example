@@ -4,7 +4,7 @@
 {% block content %}
     <h1>"{{ object.name|capfirst }}" lectures:</h1>
     <ul>
-        {% for lecture in object.lecture_set.all %}
+        {% for lecture in object.lecture_set.filter_by_published %}
             <li>
                 <a href="{{ lecture.get_absolute_url }}">{{ lecture }}</a>
             </li>

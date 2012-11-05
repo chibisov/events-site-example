@@ -9,16 +9,16 @@ class IndexPage(RedirectView):
 
 
 class EventTypeListView(ListView):
-    queryset = EventType.objects.all()
+    queryset = EventType.objects.filter_by_published()
 
 
 class EventTypeDetailView(DetailView):
-    queryset = EventType.objects.all()
+    queryset = EventType.objects.filter_by_published()
     slug_url_kwarg = 'eventtype_slug'
 
 
 class EventDetailView(DetailView):
-    queryset = Event.objects.all()
+    queryset = Event.objects.filter_by_published()
     slug_url_kwarg = 'event_slug'
 
     def get_queryset(self):
@@ -27,8 +27,8 @@ class EventDetailView(DetailView):
 
 
 class LectureListView(ListView):
-    queryset = Lecture.objects.all()
+    queryset = Lecture.objects.filter_by_published()
 
 
 class LectureDetailView(DetailView):
-    queryset = Lecture.objects.all()
+    queryset = Lecture.objects.filter_by_published()

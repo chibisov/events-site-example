@@ -6,14 +6,14 @@ from apps.events.models import EventType, Event, Lecture
 
 class EventTypeResource(ModelResource):
     class Meta:
-        queryset = EventType.objects.all()
+        queryset = EventType.objects.filter_by_published()
 
 
 class EventResource(ModelResource):
     class Meta:
-        queryset = Event.objects.all()
+        queryset = Event.objects.filter_by_published()
 
 
 class LectureResource(ModelResource):
     class Meta:
-        queryset = Lecture.objects.all()
+        queryset = Lecture.objects.filter_by_published()

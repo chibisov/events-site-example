@@ -4,7 +4,7 @@
 {% block content %}
     <h1>{{ object.name|capfirst }} events:</h1>
     <ul>
-        {% for event in object.event_set.all %}
+        {% for event in object.event_set.filter_by_published %}
             <li>
                 <a href="{{ event.get_absolute_url }}">{{ event }}</a>, {{ event.date_start|date:"d.m.Y" }}
             </li>
