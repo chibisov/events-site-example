@@ -47,3 +47,15 @@ class EventConditions(object):
             condition = EventTypeConditions.is_published(prefix=add(prefix, 'type'))
 
         return condition
+
+
+class LectureConditions(object):
+    @classmethod
+    def is_with_video(cls, model_instance=None, prefix=None):
+        if model_instance:
+            condition = bool(model_instance.video_url)
+        else:
+            condition = (Q(**{add(prefix, 'video_url__isnull'): False}) &
+                        ~Q(**{add(prefix, 'video_url'): ''}))
+
+        return condition

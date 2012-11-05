@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 
-from apps.events.managers import EventTypeManager, EventManager
-from apps.events.conditions import EventTypeConditions, EventConditions
+from apps.events.managers import EventTypeManager, EventManager, LectureManager
+from apps.events.conditions import EventTypeConditions, EventConditions, LectureConditions
 
 
 class EventType(models.Model):
@@ -73,9 +73,15 @@ class Lecture(models.Model):
     event = models.ForeignKey(Event)
     video_url = models.URLField(blank=True, null=True)
 
+    objects = LectureManager()
+
     def __unicode__(self):
         return u'{name} on {event_name}'.format(name=self.name, event_name=self.event.name)
 
     @models.permalink
     def get_absolute_url(self):
         return 'lecture-path', (), {'slug': self.slug}
+
+    @property
+    def is_with_video(self):
+        return LectureConditions.is_with_video(model_instance=self)
