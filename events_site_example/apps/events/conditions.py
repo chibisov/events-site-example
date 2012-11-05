@@ -72,3 +72,11 @@ class LectureConditions(object):
             'prefix': add(prefix, 'event')
         }
         return EventConditions.is_published(**kwargs)
+
+    @classmethod
+    def is_published(cls, model_instance=None, prefix=None):
+        kwargs = {
+            'model_instance': model_instance,
+            'prefix': prefix
+        }
+        return cls.is_with_video(**kwargs) & cls.is_with_published_event(**kwargs)

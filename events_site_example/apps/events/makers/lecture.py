@@ -13,3 +13,11 @@ def make_with_published_event(lecture):
 
 def make_not_with_published_event(lecture):
     event.make_not_published(lecture.event)
+
+def make_published(lecture):
+    event.make_published(lecture.event)
+    make_with_video(lecture)
+
+def make_not_published(lecture):
+    event.make_not_published(lecture.event)
+    make_not_with_video(lecture)
