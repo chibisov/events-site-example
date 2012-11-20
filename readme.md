@@ -1,6 +1,6 @@
 Example app for my talk "Developing and testing custom QuerySet methods".
 
-[Slides](http://search.yahoo.com/)
+[Slides](https://speakerdeck.com/mynameis/developing-custom-queryset-methods)
 
 Urls
 
